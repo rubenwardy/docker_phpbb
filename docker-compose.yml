@@ -1,0 +1,30 @@
+version: '2'
+services:
+
+  mariadb:
+    image: mariadb
+    environment:
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+
+    volumes:
+      - './data/mariadb:/var/lib/mysql'
+
+  phpbb:
+    image: 'bitnami/phpbb:3'
+    environment:
+      - MARIADB_HOST=mariadb
+      - PHPBB_PASSWORD=${PHPBB_PASSWORD}
+      - MARIADB_PORT_NUMBER=3306
+      - PHPBB_DATABASE_USER=${MYSQL_USER}
+      - PHPBB_DATABASE_NAME=${MYSQL_DATABASE}
+      - PHPBB_DATABASE_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - './data/phpbb:/bitnami'
+    depends_on:
+      - mariadb
