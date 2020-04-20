@@ -9,7 +9,7 @@ services:
       - './data/mariadb:/var/lib/mysql'
 
   phpbb:
-    image: 'bitnami/phpbb:3'
+    build: phpbb
     env_file:
       - .env
     environment:
