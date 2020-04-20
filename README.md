@@ -1,7 +1,5 @@
 # Docker PhpHBB
 
-* Maybe don't use bitnami
-
 ## Set up
 
 * Create `.env` with the following content:
@@ -18,7 +16,6 @@
 	PHPBB_FORUM_DESCRIPTION=Description
 	PHPBB_EMAIL=user@example.com
 	TABLE_PREFIX=phpbb_
-	PHPBB_INSTALLED=true
 	AUTO_DB_MIGRATE=false
 
 	# Apache
@@ -27,4 +24,6 @@
 
 * Create `./data/mariadb` with the contents of `/var/lib/mariadb`.
 * Create `./data/phpbb` with `files`, `store`, and `avatars`.
+* TODO: work out what users/groups/permissions need to be set on `./data`
 * `docker-compose up --build`
+* Go to http://localhost, and sign in as "user" with the password you specified in `PHPBB_PASSWORD`.

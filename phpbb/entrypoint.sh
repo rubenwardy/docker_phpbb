@@ -1,5 +1,4 @@
 #!/bin/sh
-# shellcheck shell=dash
 
 set -e
 
@@ -15,15 +14,7 @@ db_migrate() {
   find "$store" -type f -name '*.log' \( -empty -o -mtime +30 \) -exec rm {} +
 }
 
-if [ "$PHPBB_INSTALLED" = false ]; then
-  download-phpbb /tmp
-  mv /tmp/phpBB3/install /var/www/html/
-  mv /tmp/phpBB3/docs /var/www/html/
-  rm -rf /tmp/phpBB3
-  rm /var/www/html/config.php
-  touch /var/www/html/config.php
-  chown www-data /var/www/html/config.php
-elif [ "$AUTO_DB_MIGRATE" = true ]; then
+if [ "$AUTO_DB_MIGRATE" = true ]; then
   # Run db migration as background process:
   db_migrate &
 fi
