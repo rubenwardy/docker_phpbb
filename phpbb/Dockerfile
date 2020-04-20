@@ -52,6 +52,10 @@ VOLUME \
   /var/www/html/store \
   /var/www/html/images/avatars/upload
 
-RUN chown www-data:www-data -R /var/www/html/files /var/www/html/store /var/www/html/images/avatars
+RUN chown -R www-data:www-data \
+	# Volume
+	/var/www/html/files /var/www/html/store /var/www/html/images/avatars \
+	# Editable
+	/var/www/html/cache
 
 CMD ["/entrypoint.sh"]
