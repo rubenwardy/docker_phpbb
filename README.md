@@ -1,6 +1,5 @@
 # Docker PhpHBB
 
-* TODO: fix permissions
 * Maybe don't use bitnami
 
 ## Set up
