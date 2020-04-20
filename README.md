@@ -6,7 +6,6 @@
 
 * Create `.env` with the following content:
 
-
 	```bash
 	MYSQL_PASSWORD=
 	MYSQL_ROOT_PASSWORD=
@@ -18,11 +17,6 @@
 	PHPBB_FORUM_NAME=Minetest Forums
 	PHPBB_FORUM_DESCRIPTION=Description
 	PHPBB_EMAIL=user@example.com
-	DBHOST=mariadb
-	DBPORT=3306
-	DBNAME=phpbb
-	DBUSER=u_phpbb
-	DBPASSWD=
 	TABLE_PREFIX=phpbb_
 	PHPBB_INSTALLED=true
 	AUTO_DB_MIGRATE=false
@@ -31,5 +25,6 @@
 	SERVER_NAME=localhost
 	```
 
-* Create `./data/mariadb` with the contents of `/var/lib/mariadb`
+* Create `./data/mariadb` with the contents of `/var/lib/mariadb`.
+* Create `./data/phpbb` with `files`, `store`, and `avatars`.
 * `docker-compose up --build`

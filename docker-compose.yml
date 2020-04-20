@@ -13,14 +13,17 @@ services:
     env_file:
       - .env
     environment:
-      - PHPBB_PASSWORD=${PHPBB_PASSWORD}
-      - PHPBB_DATABASE_USER=${MYSQL_USER}
-      - PHPBB_DATABASE_NAME=${MYSQL_DATABASE}
-      - PHPBB_DATABASE_PASSWORD=${MYSQL_PASSWORD}
+      - DBHOST=mariadb
+      - DBPORT=3306
+      - DBNAME=${MYSQL_DATABASE}
+      - DBUSER=${MYSQL_USER}
+      - DBPASSWD=${MYSQL_PASSWORD}
     ports:
       - '80:80'
       - '443:443'
     volumes:
-      - './data/phpbb:/bitnami'
+      - './data/phpbb/files:/var/www/html/files'
+      - './data/phpbb/store:/var/www/html/store'
+      - './data/phpbb/avatars:/var/www/html/images/avatars/upload'
     depends_on:
       - mariadb

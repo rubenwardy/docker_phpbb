@@ -41,15 +41,10 @@ RUN rm -rf \
 		/var/www/html && \
 	mv /var/www/phpBB3 /var/www/html
 
-# Install phpBB into the Apache document root:
-# RUN rm -rf /var/www/html
-# RUN git clone --depth 1 https://github.com/phpbb/phpbb -b release-3.3.0 /var/www/html
-# RUN rm -rf \
-#     /var/www/html/install \
-#     /var/www/html/docs
-
 # Add the phpBB config file:
 COPY config.php /var/www/html/
+
+RUN git clone --depth 1 https://github.com/minetest/forum.minetest.net_template1 /var/www/html/styles/mt_v1
 
 # Expose the phpBB upload directories as volumes:
 VOLUME \
